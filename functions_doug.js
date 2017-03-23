@@ -139,12 +139,24 @@ function collect(gen, array) {
 
 function filter(gen, predicate) {
   return function () {
-    var value = gen();
-    if (value === undefined) {
-      return undefined;
-    }
     while (predicate(value) !== true) {
+      var value = gen();
+      if (value === undefined) {
+        return undefined;
+      }
+    }
+    return value;
+  };
+}
 
+function concat(f, g) {
+  return function() {
+    var first = f();
+    if (first !== undefined) {
+      return first;
+    }
+    else {
+      return g();
     }
   };
 }
