@@ -1,15 +1,15 @@
 'use strict';
 
 function add(first, second) {
-  return first + second
+  return first + second;
 }
 
 function sub(first, second) {
-  return first - second
+  return first - second;
 }
 
 function mul(first, second) {
-  return first * second
+  return first * second;
 }
 
 function identityf(value) {
@@ -20,14 +20,14 @@ function identityf(value) {
 
 function addf(first) {
   return function(second) {
-    return add(first, second)
+    return add(first, second);
   };
 }
 
 function liftf(functionName) {
   return function(first) {
     return function(second) {
-      return functionName(first, second)
+      return functionName(first, second);
     };
   };
 }
@@ -115,7 +115,7 @@ function fromTo(start, end) {
 
 function element(array, gen) {
   if (gen === undefined) {
-    gen = fromTo(0, array.length)
+    gen = fromTo(0, array.length);
   }
   return function () {
     var index = gen();
@@ -144,7 +144,7 @@ function filter(gen, predicate) {
       return undefined;
     }
     while (predicate(value) !== true) {
-      
+
     }
   };
 }
