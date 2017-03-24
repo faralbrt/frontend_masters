@@ -188,4 +188,28 @@ function fibonaccif(a, b) {
   };
 }
 var fib = fibonaccif(0, 1);
+
+function counter(start) {
+  return {
+    up: function () {
+      return start += 1;
+    },
+    down: function () {
+      return start -= 1;
+    }
+  };
+}
+
+function invocable(binary) {
+  return {
+    invoke: function (first, second) {
+      if (binary !== undefined) {
+        return binary(first, second);
+      }
+    },
+    revoke: function () {
+      binary = undefined;
+    }
+  };
+}
 debugger;
