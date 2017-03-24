@@ -144,9 +144,36 @@ function filter(gen, predicate) {
       return undefined;
     }
     while (predicate(value) !== true) {
-      
+
     }
   };
 }
 
+function gensymf(symbol) {
+  var gen = from(1);
+  return function () {
+    return symbol + gen()
+  };
+}
+// var gensymfh = gensymf("H");
+function fibonaccif(a, b) {
+  var timesCalled = 0;
+  return function () {
+    var next;
+    timesCalled += 1;
+    if (timesCalled === 1) {
+      return a;
+    }
+    else if (timesCalled === 2) {
+      return b;
+    }
+    else {
+      next = a + b;
+      a = b;
+      b = next;
+      return next;
+    }
+  };
+}
+var fib = fibonaccif(0, 1);
 debugger;
