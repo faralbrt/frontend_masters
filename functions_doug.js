@@ -212,4 +212,33 @@ function invocable(binary) {
     }
   };
 }
+
+function m(value, source) {
+  return {
+    value: value,
+    source: (typeof source === 'string')
+        ? source
+        : String(value)
+  };
+}
+
+function addm(m1, m2) {
+  var newSource = "(" + m1.source + "+" + m2.source + ")"
+  return m((m1.value + m2.value), newSource)
+}
+
+function liftm(binary, string) {
+  return function (m1, m2) {
+    if (typeof m1 === 'number') {
+      m1 = m(m1);
+    }
+    if (typeof m2 === 'number') {
+      m2 = m(m2)
+    }
+    return m(
+      binary(m1.value, m2.value),
+      "(" + m1.source + string + m2.source + ")"
+    )
+  };
+}
 debugger;
