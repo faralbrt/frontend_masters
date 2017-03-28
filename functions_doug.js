@@ -241,4 +241,13 @@ function liftm(binary, string) {
     )
   };
 }
+
+function exp(object) {
+  return (Array.isArray(object))
+    ? exp(object[0])(
+        exp(object[1]),
+        exp(object[2])
+    )
+    : object;
+}
 debugger;
